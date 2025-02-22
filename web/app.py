@@ -14,20 +14,19 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.url_map.strict_slashes = False
 
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 
 @app.route("/")
 def index():
     return render_template("inicio.html")
 
 
-@app.route("/tool")
+@app.route("/tool", methods=["GET", "POST"])
 def tool():
-    return render_template("api.html")
-
-
-@app.route("/tool/search", methods=["POST"])
-def search():
-    logging.debug(request.files)
+    if request.method == "GET":
+        return render_template("api.html")
 
     # Image
     image = request.files["image"]
@@ -52,7 +51,7 @@ def search():
 
     logging.debug(products)
 
-    return image_hash
+    return render_template("resultados.html", products=products)
 
 
 @app.route("/img/<filename>")
