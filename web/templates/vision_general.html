@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}VISIÓN GENERAL{% endblock title %}
+
+{% block body %}
+
+<main class="main-content">
+    <div class="demo-container">
+        <img src="/static/main_image.jpg" alt="Imagen principal" class="demo-image">
+        <div class="demo-overlay">
+            <div class="demo-header">
+                <div class="live-badge">
+                    <span class="live-indicator"></span>
+                    <span>LIVE</span>
+                    <span class="version">V 0.1</span>
+                </div>
+                <!-- <button class="add-button">AÑADIR A APP</button> -->
+            </div>
+            <div>Encuentra productos similares a los de la imagen que subas y descubre el presupuesto necesario para
+                adquirirlos.</div>
+        </div>
+    </div>
+
+    <div class="documentation">
+        <nav class="nav-tabs">
+            <a href="#" class="nav-tab active">VISIÓN GENERAL</a>
+            <a href="#" class="nav-tab">SOBRE NOSOTROS</a> <!-- Añadir enlace a about-us.html -->
+        </nav>
+
+        <h1 style="font-size: 50px;">TechFit</h1>
+
+        <h2>DESCRIPCIÓN DE PROYECTO</h2>
+        <p>Tras una sesión de lluvia de ideas, optamos por desarrollar un proyecto cuyo objetivo principal es la
+            creación de una página web en la que un usuario pueda subir una foto. Nuestra plataforma, utilizando una de
+            las APIs proporcionadas por Inditex, identificará las prendas en la imagen y ofrecerá opciones similares
+            disponibles en sus tiendas, mostrando además el precio de cada prenda y el coste total del conjunto.</p>
+        <p>Para llevar a cabo el proyecto, aplicamos los conocimientos adquiridos en el grado, como programación en
+            Python y el uso de APIs, combinándolos con técnicas de preprocesado de datos junto a redes neuronales
+            artificiales. Además, profundizamos en el desarrollo web con HTML usando la librería Flask.</p>
+
+        <h2>LIMITACIONES</h2>
+        <p>Nuestra intención es proporcionar al usuario una selección de prendas similares a las de su foto, disponibles
+            en todas las tiendas de Inditex. Sin embargo, debido a las restricciones de la API, solo podemos acceder a
+            las prendas disponibles en Zara.</p>
+
+    </div>
+
+    {% endblock %}
