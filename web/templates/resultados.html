@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Resultados{% endblock title %}
+
+{% block body %}
+<div id="results">
+    <div style="margin: 0 auto;">
+        <h1>Productos que componen tu outfit</h1>
+        <p>Estos son los productos ofertados en Zara ahora mismo que mejor se adaptan a la imagen de tu outfit.</p>
+    </div>
+
+    <div id="products">
+        {% for product in products %}
+        <div class="product" style="margin: 2rem auto;">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+            <a href="{{ product.link }}">{{ product.name }}</a>
+            <p>{{ product.price.value.current }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
