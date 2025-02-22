@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISUAL SEARCH - INDITEX TECH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo {
+            font-weight: bold;
+        }
+
+        .header-right {
+            font-weight: 500;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .demo-container {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .demo-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .demo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+        }
+
+        .version {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .add-button {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .documentation {
+            padding-right: 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-tab {
+            padding-bottom: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-tab.active {
+            color: #333;
+            border-bottom-color: #333;
+        }
+
+        h1, h2, h3 {
+            margin: 1.5rem 0 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .link {
+            color: #0066CC;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        .code-block code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation {
+                padding-right: 0;
+            }
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            font-weight: 600;
+            background-color: #f9f9f9;
+        }
+
+        h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .documentation-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .footer-link:hover {
+            color: #333;
+        }
+
+        .table-container {
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        td {
+            font-size: 0.9375rem;
+        }
+
+        th {
+            font-weight: 600;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="back-button">←</a>
+        <div class="logo">INDITEX TECH</div>
+        <div class="header-right">VISUAL SEARCH</div>
+    </header>
+
+    <main class="main-content">
+        <div class="demo-container">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Q1pYr1gFfQIbSJ6qcb42B2uLO9SXND.png" alt="Visual Search Demo" class="demo-image">
+            <div class="demo-overlay">
+                <div class="demo-header">
+                    <div class="live-badge">
+                        <span class="live-indicator"></span>
+                        <span>LIVE</span>
+                        <span class="version">V 1.5</span>
+                    </div>
+                    <button class="add-button">ADD TO APPLICATION</button>
+                </div>
+                <div>Find products visually similar to the image you provide.</div>
+            </div>
+        </div>
+
+        <div class="documentation">
+            <nav class="nav-tabs">
+                <a href="#" class="nav-tab active">OVERVIEW</a>
+                <a href="#" class="nav-tab">SPECIFICATION</a>
+            </nav>
+
+            <h1>VISUAL SEARCH</h1>
+
+            <h2>ABOUT</h2>
+            <p>Provide a URL to find products that are similar to any clothing items found in the image. Obtain full product names, IDs, prices and discounts, and direct links to the corresponding brand's web store.</p>
+
+            <h2>MAIN GOAL</h2>
+            <p>With this API, you can:</p>
+            <ul>
+                <li>Provide an image of a product you have interest in via a URL, and get similar products currently available in Zara.</li>
+                <li>Get product IDs and names, the current price and also the original price if there's a discount, and a link to the product's web store, and the brand behind the product.</li>
+                <li>Paginate through results to easily manage large data sets.</li>
+            </ul>
+
+            <h2>CONTEXT</h2>
+            <p>This API is available through the Inditex Developer Portal. To be able to use it, you first need to <a href="#" class="link">sign up</a>, <a href="#" class="link">create an application</a>, and then <a href="#" class="link">add this API</a> to it.</p>
+
+            <h2>CONFIGURATION</h2>
+            <p>This API does not require any particular configuration.</p>
+
+            <h2>SPECIFICS</h2>
+            <h3>AUTHENTICATION</h3>
+            <p>You can use this API in your service in sandbox and production environments with OAuth2 authentication. See <a href="#" class="link">Promote to production guide</a> to know how to authenticate in both environments and start making requests right away.</p>
+
+            <h2>RATE LIMIT</h2>
+            <p>This API, along with all the Developer Portal APIs, has a rate limit that you can check in the information button in the API card. In case this limit is exceeded, you will get a 429 HTTP error code.</p>
+
+            <h2>USAGE</h2>
+            <p>If you want to take a peek at this API via web, you can do it accessing the <em>Specification</em> tab. Check the <a href="#" class="link">Promote to production guide</a> to learn how to use the Try it out functionality.</p>
+
+            <h2>GET STARTED WITH A USE CASE</h2>
+            <p>Wouldn't it be useful to find a product similar to one you see someone wearing in the street? This API can be used for that purpose, among others. You could make an application that enables users to take a picture and give them the Zara link so they can directly buy the products.</p>
+            
+            <p>To make this application work, you can start by registering, logging in, and creating an application in the Developer Portal that contains the Visual Search API. Once you have that, you can start making sandbox calls to integrate with this API, and when you already have integrated, you can promote your application to production to start getting real data.</p>
+
+            <h3>MAKE A SANDBOX CALL</h3>
+            <ol>
+                <li>Request a JWT to the <code>auth.inditex.com</code> sandbox realm specifying your credentials along with the scopes of the APIs you want to access so that you can make requests to the APIs in your application.</li>
+            </ol>
+            <p>See how to do this with <code>curl</code> in the <a href="#" class="link">Promote to production guide</a>.</p>
+
+            <ol start="2">
+                <li>Make a CURL with the token and the base URL of the API that is displayed in the specification tab of the Visual Search API Detail page.</li>
+            </ol>
+            <p>To provide the user's image, you can use the <code>GET /products</code> operation like this:</p>
+
+            <div class="code-block">
+                <pre><code>curl -X GET "https://api-sandbox.inditex.com/pubvsearch-sandbox/products?image=YOUR_IMAGE_URL" \
+    -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+    -H "Content-Type: application/json"</code></pre>
+            </div>
+
+            <ul>
+                <li>Replace <code>YOUR_IMAGE_URL</code> with the URL that leads to an image that is under 7 MB in size.</li>
+                <li>Replace <code>YOUR_JWT_TOKEN</code> with your actual JWT code obtained in step 1.</li>
+            </ul>
+
+            <p>This will retrieve you with the similar products' ID, their name, their current price and also the original price range for products with an applied discount, links to the products Web store, and the brand behind the product.</p>
+
+            <h3>MAKE A PRODUCTION CALL</h3>
+            <p>Whenever you want to switch to the production environment, repeat the same steps, but note these differences:</p>
+            <ul>
+                <li>You need to promote your application to production.</li>
+                <li>The JWT URL: Obtain the production JWT from the production realm.</li>
+                <li>The API Base URL: Use the production API base URL (provided in the API detail page).</li>
+            </ul>
+
+            <h2>ENDPOINTS</h2>
+            <h3>VISUALLY SEARCH PRODUCTS</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PARAMETER</th>
+                            <th>TYPE</th>
+                            <th>DESCRIPTION</th>
+                            <th>REQUIRED</th>
+                            <th>EXAMPLE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>image</td>
+                            <td>string</td>
+                            <td>URL that leads to an image that is under 7 MB in size</td>
+                            <td>Yes</td>
+                            <td>https://es.pinterest.com/pin/622411611023151390/</td>
+                        </tr>
+                        <tr>
+                            <td>page</td>
+                            <td>int</td>
+                            <td>Page number of the result (default:1)</td>
+                            <td>No</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>perPage</td>
+                            <td>int</td>
+                            <td>Number of products per page (default: 5)</td>
+                            <td>No</td>
+                            <td>5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Example request</h4>
+            <p>Obtain a list of jeans similar to ones seen in Pinterest.</p>
+
+            <div class="code-block">
+                <pre><code>curl -X GET "https://api-sandbox.inditex.com/pubvsearch-sandbox/products?image=https://es.pinterest.com/pin/622411611023151390/" \
+    -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+    -H "Content-Type: application/json"</code></pre>
+            </div>
+
+            <h4>Success Response (200 OK)</h4>
+            <div class="code-block">
+                <pre><code>{
+    "id": "367022517",
+    "name": "GEOMETRIC JACQUARD SHIRT",
+    "price": {
+        "currency": "EUR",
+        "value": {
+            "current": 29.95
+        }
+    },
+    "link": "https://www.zara.com/es/en/geometric-jacquard-shirt-p01615475.html?v1=367022517",
+    "brand": "zara"
+},
+{
+    "id": "367196402",
+    "name": "METALLIC THREAD RUSTIC SHIRT",
+    "price": {
+        "currency": "EUR",
+        "value": {
+            "current": 15.99,
+            "original": 27.95
+        }
+    },
+    "link": "https://www.zara.com/es/en/metallic-thread-rustic-shirt-p02298151.html?v1=367196402",
+    "brand": "zara"
+}</code></pre>
+            </div>
+            <h3>Response structure</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>FIELD</th>
+                            <th>TYPE</th>
+                            <th>DESCRIPTION</th>
+                            <th>EXAMPLE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>string</td>
+                            <td>Unique identifier for the product</td>
+                            <td>367196402</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td>string</td>
+                            <td>Product name</td>
+                            <td>METALLIC THREAD RUSTIC SHIRT</td>
+                        </tr>
+                        <tr>
+                            <td>price.currency</td>
+                            <td>string</td>
+                            <td>The currency code in ISO 4217 format. Possible value: EUR</td>
+                            <td>EUR</td>
+                        </tr>
+                        <tr>
+                            <td>price.value.current</td>
+                            <td>float</td>
+                            <td>The current selling price of the product</td>
+                            <td>15.99</td>
+                        </tr>
+                        <tr>
+                            <td>price.value.original</td>
+                            <td>float</td>
+                            <td>The original price before any discount. Whenever a product has a discount, the price object returns the original attribute. If there's no discount, the original attribute isn't returned.</td>
+                            <td>27.95</td>
+                        </tr>
+                        <tr>
+                            <td>link</td>
+                            <td>string</td>
+                            <td>Product URL on the website of the corresponding brand. Link formats vary from brand to brand, so links can and will change accordingly.</td>
+                            <td>https://www.zara.com/es/en/metallic-thread-rustic-shirt-p02298151.html?v1=367196402</td>
+                        </tr>
+                        <tr>
+                            <td>brand</td>
+                            <td>string</td>
+                            <td>Brand of the product</td>
+                            <td>zara</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>ERROR HANDLING</h2>
+            <p>Here's what you might encounter if something goes wrong:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STATUS CODE</th>
+                            <th>DESCRIPTION</th>
+                            <th>SOLUTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>200 Successful request</td>
+                            <td>Successful response with product search results.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>400 Bad Request</td>
+                            <td>Invalid request parameters.</td>
+                            <td>Modify the request so that the request parameters are correct.</td>
+                        </tr>
+                        <tr>
+                            <td>401 Unauthorized Request</td>
+                            <td>User not authorized or authentication invalid.</td>
+                            <td>Provide the correct credentials to authenticate.</td>
+                        </tr>
+                        <tr>
+                            <td>403 Forbidden</td>
+                            <td>User hasn't got permissions to perform the request.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>404 No products found</td>
+                            <td>No products were found matching the given criteria.</td>
+                            <td>Try another query parameters.</td>
+                        </tr>
+                        <tr>
+                            <td>429 Too many requests</td>
+                            <td>You have exceeded the maximum number of requests allowed.</td>
+                            <td>Limit your API calls to the API rate limit.</td>
+                        </tr>
+                        <tr>
+                            <td>500 Internal server error</td>
+                            <td>An unexpected error has occurred on the server.</td>
+                            <td>If the problem persists, please contact us at <a href="mailto:supportapi@inditex.com" class="link">supportapi@inditex.com</a>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>DOCUMENTATION</h2>
+            <p>You can find more documentation for this API on the specifics tab.</p>
+
+            <footer class="documentation-footer">
+                <nav class="footer-links">
+                    <a href="#" class="footer-link">LEGAL</a>
+                    <a href="#" class="footer-link">COOKIES</a>
+                    <a href="#" class="footer-link">PRIVACY POLICY</a>
+                    <a href="#" class="footer-link">ABOUT</a>
+                    <a href="#" class="footer-link">RELEASE NOTES</a>
+                    <a href="#" class="footer-link">CONTACT US</a>
+                </nav>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
