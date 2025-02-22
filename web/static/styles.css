@@ -10,27 +10,116 @@ body {
     line-height: 1.6;
 }
 
-header {
+/* Cabecera */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0rem 1rem;
     border-bottom: 1px solid #eee;
 }
 
-.back-button {
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 100px;
+    width: auto;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.header-right a {
+    margin-left: 1rem;
     text-decoration: none;
     color: #333;
 }
 
-.logo {
+/* Footer */
+#footer {
+    margin: 0 auto auto auto;
+    text-align: center;
+    border-top: 1px solid #d4d4d4;
+    padding: 0rem 1rem;
+    user-select: none;
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
 }
 
-.header-right {
-    font-weight: 500;
+/* Inicio */
+#inicio {
+    color: #fff;
+    background-image: url('/static/inicio.png');
+    background-size: cover;
+    background-position: center;
 }
 
+#inicio .home-info {
+    color: #fff;
+    text-align: center;
+    text-shadow: 10px 10px 20px #000;
+    margin: 0 auto;
+}
+
+#inicio h1 {
+    padding-top: 35vh;
+    margin: 0;
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+#inicio p {
+    padding-bottom: 10vh;
+    margin: 0;
+}
+
+/* Api */
+#api {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 5vh 0;
+}
+
+#api h1 {
+    margin: 0;
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+#api p {
+    margin: 20px 0 40px;
+}
+
+#api form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#api form input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#api .btn-primary {
+    width: 200px;
+}
+
+
+/* ... */
 .main-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -67,6 +156,7 @@ header {
     margin-bottom: 0.5rem;
 }
 
+/* Live, version and add button */
 .live-badge {
     display: inline-flex;
     align-items: center;
@@ -93,6 +183,7 @@ header {
     cursor: pointer;
 }
 
+/* ... */
 .documentation {
     padding-right: 2rem;
 }
@@ -116,6 +207,7 @@ header {
     border-bottom-color: #333;
 }
 
+/* ... */
 h1,
 h2 {
     margin: 1.5rem 0 1rem;
@@ -130,7 +222,7 @@ ul {
     padding-left: 1.5rem;
 }
 
-.link {
+/* .link {
     color: #0066CC;
     text-decoration: none;
-}
+} */

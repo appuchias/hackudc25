@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}OVERVIEW{% endblock title %}
+
+{% block body %}
+
+<main class="main-content">
+    <div class="demo-container">
+        <img src="/static/main_image.png" alt="Descripción de la imagen" class="demo-image">
+        <div class="demo-overlay">
+            <div class="demo-header">
+                <div class="live-badge">
+                    <span class="live-indicator"></span>
+                    <span>LIVE</span>
+                    <span class="version">V 0.1</span>
+                </div>
+                <button class="add-button">ADD TO APPLICATION</button>
+            </div>
+            <div>Find products visually similar to the image you provide.</div>
+        </div>
+    </div>
+
+    <div class="documentation">
+        <nav class="nav-tabs">
+            <a href="#" class="nav-tab active">OVERVIEW</a>
+            <a href="#" class="nav-tab">ABOUT US</a> <!-- Añadir enlace a about-us.html -->
+        </nav>
+
+        <h1>OUR TOOL</h1>
+
+        <h2>ABOUT</h2>
+        <p>Provide a URL to find products that are similar to any clothing items found in the image. Obtain full product
+            names, IDs, prices and discounts, and direct links to the corresponding brand's web store.</p>
+
+        <h2>MAIN GOAL</h2>
+        <p>With this API, you can:</p>
+        <ul>
+            <li>Provide an image of a product you have interest in via a URL, and get similar products currently
+                available in Zara.</li>
+            <li>Get product IDs and names, the current price and also the original price if there's a discount, and a
+                link to the product's web store, and the brand behind the product.</li>
+            <li>Paginate through results to easily manage large data sets.</li>
+        </ul>
+
+        <h2>CONTEXT</h2>
+        <p>This API is available through the Inditex Developer Portal. To be able to use it, you first need to <a
+                href="#" class="link">sign up</a>, <a href="#" class="link">create an application</a>, and then <a
+                href="#" class="link">add this API</a> to it.</p>
+    </div>
+
+    {% endblock %}
