@@ -1,7 +1,7 @@
 import logging, os
 from hashlib import sha256
 
-from flask import Flask, request, render_template, send_file, flash
+from flask import Flask, request, render_template, send_file
 from werkzeug.utils import secure_filename
 
 from config import *
@@ -46,7 +46,6 @@ def search():
     jwt = get_jwt()
     if not jwt:
         logging.error("Error: JWT could not be retrieved.")
-        flash("Error: JWT could not be retrieved.", "error")
         return render_template("api.html")
 
     products = get_img_products(jwt, img_url)
@@ -71,4 +70,4 @@ def img(filename):
 
 @app.route("/documentation")
 def documentation():
-    return render_template("overview.html")
+    return render_template("vision_general.html")
