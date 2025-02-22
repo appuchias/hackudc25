@@ -2,6 +2,7 @@
 
 import json, logging, os, requests
 from base64 import b64encode
+from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -20,12 +21,18 @@ def get_jwt(filepath: str | Path = ".JWT") -> str | None:
     if os.path.exists(filepath):
         with open(filepath, "r") as f:
             try:
-                token = json.load(f)[token_key]
-                logging.debug(f"Token read from file")
-                return token
+                content = json.load(f)
             except json.decoder.JSONDecodeError:
                 logging.error("Error: JWT file is corrupted.")
                 return None
+
+            if (
+                datetime.fromisoformat(content["timestamp"])
+                + timedelta(seconds=content["expires_in"])
+                > datetime.now()
+            ):
+                logging.debug(f"Token read from file")
+                return content[token_key]
 
     response = requests.post(
         prod_endpoint
@@ -45,7 +52,9 @@ def get_jwt(filepath: str | Path = ".JWT") -> str | None:
 
     if response.status_code == 200:
         with open(".JWT", "w") as f:
-            json.dump(response.json(), f)
+            content = response.json()
+            content["timestamp"] = datetime.now().isoformat()
+            json.dump(content, f)
             logging.debug(f"Token written to file")
 
         return response.json()[token_key]
@@ -80,8 +89,6 @@ if __name__ == "__main__":
         exit(1)
 
     img = "https://i.pinimg.com/originals/08/ff/da/08ffda7169479a93e97fc18a5bb20c8d.jpg"
-    # img = "https://i.pinimg.com/736x/50/f8/45/50f8450d3305fb90a30dc387195ae023.jpg"
-    # img = "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
     zara_products = get_img_products(jwt=jwt, img_url=img)
 
