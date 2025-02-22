@@ -1,14 +1,11 @@
 import logging, os
 
-with open(".env", "r") as f:
-    env = dict([line.strip().split("=") for line in f.readlines()])
+from dotenv import load_dotenv
 
-if os.getenv("PUBLIC") is None:
-    os.environ["PUBLIC"] = env["PUBLIC"]
-if os.getenv("SECRET") is None:
-    os.environ["SECRET"] = env["SECRET"]
-if os.getenv("LOGLEVEL") is None:
-    os.environ["LOGLEVEL"] = env.get("LOGLEVEL", "INFO")
+load_dotenv()
+
+# with open(".env", "r") as f:
+#     env = dict([line.strip().split("=") for line in f.readlines()])
 
 PUBLIC = os.getenv("PUBLIC")
 SECRET = os.getenv("SECRET")
