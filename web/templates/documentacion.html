@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}DOCUMENTACIÓN{% endblock title %}
+
+{% block body %}
+
+<main class="main-content">
+    <div class="demo-container">
+        <img src="/static/main_image.jpg" alt="Imagen principal" class="demo-image">
+        <div class="demo-overlay">
+            <div class="demo-header">
+                <div class="live-badge">
+                    <span class="live-indicator"></span>
+                    <span>LIVE</span>
+                    <span class="version">V 0.1</span>
+                </div>
+            </div>
+            <div>Encuentra productos similares a los de la imagen que subas y descubre el presupuesto necesario para
+                adquirirlos.</div>
+        </div>
+    </div>
+
+    <div class="documentation pestanas">
+        <input type="radio" class="radio-pestanas" name="pestana" id="pestanas-general" checked>
+        <label for="pestanas-general" class="etiqueta-pestanas">VISIÓN GENERAL</label>
+        <div class="contenido-pestanas">
+            <h1 style="font-size: 50px;">TechFit</h1>
+
+            <h2>DESCRIPCIÓN DE PROYECTO</h2>
+            <p>Tras una sesión de lluvia de ideas, optamos por desarrollar un proyecto cuyo objetivo principal es la
+                creación de una página web en la que un usuario pueda subir una foto. Nuestra plataforma, utilizando una de
+                las APIs proporcionadas por Inditex, identificará las prendas en la imagen y ofrecerá opciones similares
+                disponibles en sus tiendas, mostrando además el precio de cada prenda y el coste total del conjunto.</p>
+            <p>Para llevar a cabo el proyecto, aplicamos los conocimientos adquiridos en el grado, como programación en
+                Python y el uso de APIs, combinándolos con técnicas de preprocesado de datos junto a redes neuronales
+                artificiales. Además, profundizamos en el desarrollo web con HTML usando la librería Flask.</p>
+
+            <h2>LIMITACIONES</h2>
+            <p>Nuestra intención es proporcionar al usuario una selección de prendas similares a las de su foto, disponibles
+                en todas las tiendas de Inditex. Sin embargo, debido a las restricciones de la API, solo podemos acceder a
+                las prendas disponibles en Zara.</p>
+        </div>
+        <input type="radio" class="radio-pestanas" name="pestana" id="pestanas-nos">
+        <label for="pestanas-nos" class="etiqueta-pestanas">SOBRE NOSOTROS</label>
+        <div class="contenido-pestanas">
+            <p>Somos 4 estudiantes de tercer curso del Grado de Ciencia e Ingeniería de Datos que decidimos apuntarnos al reto
+                de HackUDC.
+            </p>
+            <p>
+                <strong>Pablo Fernández:</strong>
+                <br>
+                Desarrollo del back-end de la plataforma, incluyendo la integración eficiente de la API proporcionada por
+                Inditex y la gestión de la comunicación entre los distintos componentes del sistema.
+            </p>
+            <p>
+                <strong>Xoel Maestu:</strong>
+                <br>
+                Aplicación de modelos avanzados de aprendizaje automático para la identificación, segmentación y clasificación
+                automatizada de las prendas presentes en la imagen.
+            </p>
+            <p>
+                <strong>Claudia Mahía:</strong>
+                <br>
+                Implementación de un modelo de segmentación de imágenes basado en técnicas de visión por computadora para la
+                detección y aislamiento preciso de la silueta de las personas respecto al fondo.
+            </p>
+            <p>
+                <strong>Lúa Rico:</strong>
+                <br>
+                Diseño y desarrollo de la interfaz web mediante HTML y CSS, garantizando una experiencia de usuario fluida,
+                funcional y estéticamente atractiva.
+            </p>
+        
+            <h2>Recursos de terceros empleados</h2>
+            <ul>
+                <li><strong>Lucine Icons:</strong> Conjunto de iconos de código abierto → Licencia: ISC License.</li>
+                <li><strong>HTMX:</strong> Biblioteca para facilitar interacciones dinámicas en HTML → Licencia: BSD-2-Clause
+                    License.</li>
+                <li><strong>Unsplash:</strong> Plataforma de imágenes libres de derechos → Licencia: Unsplash License.</li>
+                <li><strong>API Inditex:</strong> Usada para obtener información sobre prendas y precios → Licencia y términos
+                    sujetos a Inditex.</li>
+                <li><strong>DeepLabV3-ResNet101:</strong>Modelo de segmentación de imágenes.</li>
+                <ul>
+                    <li>Repositorio: PyTorch Vision </li>
+                    <li>Licencia: BSD 3-Clause License </li>
+                    <li>Datos de entrenamiento: COCO Dataset → Licencia: licenciado bajo Creative commons Attribution 4.0
+                        (CC-BY 4.0)</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -70,4 +70,4 @@ def img(filename):
 
 @app.route("/documentation")
 def documentation():
-    return render_template("vision_general.html")
+    return render_template("documentacion.html")

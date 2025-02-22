@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0rem 1rem;
+    padding: 1rem 1rem;
     border-bottom: 1px solid #eee;
 }
 
@@ -139,16 +139,6 @@ body {
     height: auto;
 }
 
-.demo-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: white;
-    border-top: 1px solid #eee;
-}
-
 .demo-header {
     display: flex;
     justify-content: space-between;
@@ -156,7 +146,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Live, version and add button */
+/* Live and version */
 .live-badge {
     display: inline-flex;
     align-items: center;
@@ -166,21 +156,13 @@ body {
 .live-indicator {
     width: 8px;
     height: 8px;
-    background: #4CAF50;
-    border-radius: 50%;
+    background: #17cfb0;
+    border-radius: 0%;
 }
 
 .version {
     color: #666;
     font-size: 0.9rem;
-}
-
-.add-button {
-    padding: 0.5rem 1rem;
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 /* ... */
@@ -222,7 +204,38 @@ ul {
     padding-left: 1.5rem;
 }
 
-/* .link {
-    color: #0066CC;
-    text-decoration: none;
-} */
+/* Pestañas */
+.pestanas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.etiqueta-pestanas {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.radio-pestanas {
+    display: none;
+}
+
+.contenido-pestanas {
+    order: 1;
+    width: 100%;
+    display: none;
+    margin-top: 8px;
+}
+
+.radio-pestanas:checked+.etiqueta-pestanas {
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.radio-pestanas:checked+.etiqueta-pestanas+.contenido-pestanas {
+    display: initial;
+
+}
+
+.contenido-pestanas p {
+    text-align: justify;
+}
