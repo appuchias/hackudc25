@@ -26,11 +26,13 @@ def index():
     return render_template("inicio.html")
 
 
-@app.route("/tool", methods=["GET", "POST"])
+@app.route("/tool")
 def tool():
-    if request.method == "GET":
-        return render_template("api.html")
+    return render_template("api.html")
 
+
+@app.route("/tool/search", methods=["POST"])
+def search():
     # Image
     image = request.files["image"]
     image_hash = sha256(image.read()).hexdigest()
