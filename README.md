@@ -27,8 +27,8 @@ pip install -r requirements.txt
 ### 4. Configura las credenciales de la API de INDITEXTECH:
 Registra una cuenta en INDITEXTECH y obtén una clave de API para la **Visual Search API**. Luego, crea un archivo `.env` y agrega:
 ```
-PUBLIC=
-SECRET=
+PUBLIC=tu-id
+SECRET=tu-clave
 ```
 
 Donde `PUBLIC` es el "`client_id`" y `SECRET` es el "`client_secret`" de tu cuenta en `developers.inditex.com`. \
