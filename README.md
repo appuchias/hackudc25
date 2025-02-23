@@ -15,8 +15,8 @@ cd outfit-inditex
 ### 2. Crea un entorno virtual y actívalo:
 ```bash
 python -m venv venv
-. venv/bin/activate  # En macOS/Linux
-venv\Scripts\activate    # En Windows
+. ./venv/bin/activate      # En macOS/Linux
+.\venv\Scripts\activate    # En Windows
 ```
 
 ### 3. Instala las dependencias con *requirements.txt*:
