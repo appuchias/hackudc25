@@ -17,7 +17,9 @@
             <p>{{ product.price.value.current }}</p>
         </div>
         {% endfor %}
-
+        <div class="total">
+            <p>TOTAL → {{ "%.2f"|format(total) }} €</p>
+        </div>
     </div>
 </div>
 {% endblock %}

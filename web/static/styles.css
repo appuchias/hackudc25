@@ -244,3 +244,9 @@ a {
 .contenido-pestanas p {
     text-align: justify;
 }
+
+/* Resultados */
+
+.total p {
+    font-weight: bold;
+}

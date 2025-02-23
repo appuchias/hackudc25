@@ -180,7 +180,8 @@ def search():
 
     logging.debug(products)
 
-    return render_template("resultados.html", products=products)
+    total = sum(float(product['price']['value']['current']) for product in products)
+    return render_template("resultados.html", products=products, total=total)
 
 
 @app.route("/img/<filename>")
