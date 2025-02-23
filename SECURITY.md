@@ -5,8 +5,7 @@
 Solo las versiones más recientes y las versiones principales anteriores del proyecto reciben actualizaciones de seguridad. Las versiones más antiguas dejen de recibir soporte una vez que se lanza una nueva versión principal.
 
 **Versiones actualmente soportadas:**
-- **Última versión estable** (vX.Y.Z).
-- **Versión anterior** (vX.Y.W).
+- **Última versión estable** (1.0.0).
 
 Se recomienda actualizar a la última versión estable para obtener las últimas mejoras y correcciones de seguridad.
 
