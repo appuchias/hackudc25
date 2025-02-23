@@ -11,7 +11,11 @@ UPLOAD_FOLDER = "uploads/"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 # a.k.a. "honestidad" (usar resultados precalculados por problemas con la API)
-MOCK = True
+MOCK = False
+
+USE_SEGMENTATION = False
+if USE_SEGMENTATION:
+    from body_segmentation import *
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -53,6 +57,80 @@ def search():
             + "."
             + secure_filename(image_extension)
         )
+
+        if USE_SEGMENTATION:
+            download_model()
+            detector = load_pose_model()
+            # Segmenta la imagen usando la función `process_image_from_url`
+            result = process_image_from_url(img_url, detector, scale_multiplier=2.0)
+
+            if not result:
+                logging.error("Error processing the image")
+                return render_template("api.html", error="Error processing the image")
+
+            # Extrae las regiones segmentadas
+            head_image = result.get("head")
+            torso_image = result.get("torso")
+            legs_image = result.get("legs")
+            feet_image = result.get("feet")
+
+            # Función para obtener productos de la API para cada segmento
+            def get_products_for_segment(segment_image, segment_name):
+                # Guarda la imagen del segmento
+                segment_image_path = (
+                    f"{UPLOAD_FOLDER}{image_hash}_{segment_name}.png"  # Guarda como PNG
+                )
+                cv2.imwrite(segment_image_path, segment_image)
+                segment_img_url = (
+                    request.url_root + "img/" + f"{image_hash}_{segment_name}.png"
+                )
+                logging.debug(
+                    f"{segment_name.capitalize()} image available at {segment_img_url}"
+                )
+
+                # Obtén el JWT y consulta la API
+                jwt = get_jwt()
+                if not jwt:
+                    logging.error("Error: JWT could not be retrieved.")
+                    return []
+
+                return get_img_products(jwt, segment_img_url)
+
+            # Llama a la API para cada segmento
+            head_products = get_products_for_segment(head_image, "head")
+            torso_products = get_products_for_segment(torso_image, "torso")
+            legs_products = get_products_for_segment(legs_image, "legs")
+            feet_products = get_products_for_segment(feet_image, "feet")
+
+            # Combina los productos en un diccionario para la visualización
+            all_products = {
+                "head": head_products,
+                "torso": torso_products,
+                "legs": legs_products,
+                "feet": feet_products,
+            }
+
+            print(all_products)
+
+            return render_template(
+                "resultados.html",
+                products=all_products,
+                total=sum(
+                    [
+                        sum([p["price"]["value"]["current"] for p in products])
+                        for products in all_products.values()
+                    ]
+                ),
+            )
+
+        # return render_template(
+        #     "resultados.html",
+        #     {
+        #         "products": all_products if USE_SEGMENTATION else products,
+        #         "total": sum([p["price"]["value"]["current"] for p in products])
+        #         / len(products),
+        #     },
+        # )
 
     logging.debug(f"Image available at {img_url}")
 
@@ -180,8 +258,15 @@ def search():
 
     logging.debug(products)
 
-    total = sum(float(product['price']['value']['current']) for product in products)
-    return render_template("resultados.html", products=products, total=total)
+    return render_template(
+        "resultados.html",
+        products=products,
+        total=(
+            sum([p["price"]["value"]["current"] for p in products]) / len(products)
+            if products
+            else 0
+        ),
+    )
 
 
 @app.route("/img/<filename>")
