@@ -16,7 +16,12 @@ Se recomienda actualizar a la última versión estable para obtener las últimas
 
 Si encuentras una vulnerabilidad de seguridad, te agradecemos que nos lo informes para que podamos tomar medidas. Para reportar una vulnerabilidad, sigue estos pasos:
 
-1. **Envía un correo electrónico confidencial** a nuestro equipo de seguridad a: [seguridad@proyecto.com](mailto:seguridad@proyecto.com).
+1. **Envía un correo electrónico confidencial** a nuestro equipo de seguridad a:
+- [lua.ricor@udc.es](mailto:lua.ricor@udc.es)
+- [p.fernandezf@udc.es](mailto:p.fernandezf@udc.es)
+- [c.mvarela@udc.es](mailto:c.mvarela@udc.es)
+- [xoel.maestu@udc.es](mailto:xoel.maestu@udc.es)
+
 2. **Proporciona detalles claros** del problema, incluyendo:
    - Descripción de la vulnerabilidad.
    - Pasos para reproducir el problema.

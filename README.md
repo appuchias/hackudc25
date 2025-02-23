@@ -34,8 +34,8 @@ INDITEX_API_KEY=tu_clave_de_api
 
 ## 🔍 Cómo funciona  
 1. Sube una imagen con un outfit completo.
-2. Nuestra aplicación segmenta las prendas individuales utilizando **[MediaPipe PoseLandmarker](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker)**.
-3. Cada prenda segmentada se envía a la **[API de Búsqueda Visual de InditexTech](https://developers.inditex.com/)**.
+2. Nuestra aplicación segmenta las prendas individuales utilizando [MediaPipe PoseLandmarker](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker).
+3. Cada prenda segmentada se envía a la [API de Búsqueda Visual de InditexTech](https://developers.inditex.com/).
 4. Obtenemos las prendas más similares disponibles en tiendas Inditex.
 5. Se genera un informe con precios y enlaces de compra.
 
@@ -79,7 +79,7 @@ Proyecto desarrollado durante **HackUDC2025** por un equipo de estudiantes de **
 ---
 
 ## ❌ Intentos de implementación no satisfactorios
-- Segmentación de prendas individuales: **[Torchvision *deeplabv3_resnet101*](https://pytorch.org/vision/main/models/generated/torchvision.models.segmentation.deeplabv3_resnet101.html)** fine tunning con **[Fashionpedia](https://fashionpedia.github.io/home/data_license.html)**
+- Segmentación de prendas individuales: [Torchvision *deeplabv3_resnet101*](https://pytorch.org/vision/main/models/generated/torchvision.models.segmentation.deeplabv3_resnet101.html) fine tunning con [Fashionpedia](https://fashionpedia.github.io/home/data_license.html).
 
 ---
 
@@ -89,5 +89,5 @@ Proyecto desarrollado durante **HackUDC2025** por un equipo de estudiantes de **
 ---
 
 ## 🐝 Licencia  
-Este proyecto está bajo la licencia **[BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)**. ¡Úsalo libremente! 🎉
+Este proyecto está bajo la licencia [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause). ¡Úsalo libremente! 🎉
 

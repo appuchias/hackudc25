@@ -6,7 +6,7 @@ Tu ayuda es clave para mejorar esta aplicación y hacerla aún más útil para l
 ---
 
 ## 📜 Código de conducta
-Nos comprometemos a mantener un ambiente inclusivo, respetuoso y colaborativo. Por favor, revisa nuestro **[Código de Conducta](CODE_OF_CONDUCT.md)** antes de contribuir.
+Nos comprometemos a mantener un ambiente inclusivo, respetuoso y colaborativo. Por favor, revisa nuestro [Código de Conducta](CODE_OF_CONDUCT.md) antes de contribuir.
 
 ---
 
@@ -66,7 +66,7 @@ Si quieres contribuir con código, sigue estos pasos:
 
 ## 🛠 Estilo de código y convenciones
 - Usa **Python 3.10**.
-- Sigue la **[estilo de formateo de black](https://black.readthedocs.io/en/stable/the_black_code_style/index.html)** como estándar de estilo.
+- Sigue la [estilo de formateo de black](https://black.readthedocs.io/en/stable/the_black_code_style/index.html) como estándar de estilo.
 - Usa **tipado estático** en las funciones.
 - Mantén el código modular y reutilizable.
 
