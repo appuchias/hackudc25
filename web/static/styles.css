@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 1rem;
     border-bottom: 1px solid #eee;
 }
 
@@ -65,19 +65,24 @@ body {
     color: #fff;
     text-align: center;
     text-shadow: 10px 10px 20px #000;
+
     margin: 0 auto;
+    padding-top: 40vh;
+
+    min-height: calc(100vh - 108px);
 }
 
 #inicio h1 {
-    padding-top: 35vh;
     margin: 0;
     font-size: 5rem;
     font-weight: 600;
 }
 
 #inicio p {
-    padding-bottom: 10vh;
     margin: 0;
+
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px #000;
 }
 
 /* Api */
