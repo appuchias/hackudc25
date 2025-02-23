@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <!-- Meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
 
-    <link rel="icon" href="/static/shirt.svg" type="image/svg">
+        <link rel="icon" href="/static/shirt.svg" type="image/svg">
 
-    {% block head %}{% endblock head %}
-    <title>{% block title %}HackUDC{% endblock title %} · HackUDC '25</title>
-</head>
+        {% block head %}{% endblock head %}
+        <title>{% block title %}HackUDC{% endblock title %} · HackUDC '25</title>
+    </head>
 
-<body>
-    <nav>
-        <div class="header">
-            <div class="logo">
-                <img src="/static/shirt.svg" alt="Logo">
+    <body>
+        <nav>
+            <div class="header">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/static/shirt.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a href="/documentation" class="me-3">DOCUMENTACIÓN</a>
+                    <a href="/tool">TECHFIT</a>
+                </div>
             </div>
-            <div class="header-right">
-                <a href="/documentation" class="me-3">DOCUMENTACIÓN</a>
-                <a href="/tool">TECHFIT</a>
-            </div>
+        </nav>
+        <div id="content">
+            {% block body %}
+            <h1>Bienvenida/o a HackUDC 2025</h1>
+            {% endblock %}
         </div>
-    </nav>
-    <div id="content">
-        {% block body %}
-        <h1>Bienvenida/o a HackUDC 2025</h1>
-        {% endblock %}
-    </div>
-    <div id="footer">
-        <p>HackUDC 2025</p>
-        <p><a href="https://github.com/appuchias/hackudc25/tree/main/web/LICENSE">Licencia BSD 3-Clause</a></p>
-    </div>
-</body>
+        <div id="footer">
+            <p>HackUDC 2025</p>
+            <p><a href="https://github.com/appuchias/hackudc25/tree/main/web/LICENSE">Licencia BSD 3-Clause</a></p>
+        </div>
+    </body>
 
 </html>
